@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无人机在线管理平台</title>
+    <style>
+        .blank_1_top{
+            width: 100%;
+            font-size: large;
+            background-color: #f0f0f4;
+            font-size: 20px;
+        }
+        button{
+            float: right;
+            font-size: 20px;
+            margin-top: 3px;
+        }
+        input{
+            font-size: 10px;
+            height: 20px;
+        }
+    </style>
+</head>
+<script>
+
+</script>
+<body>
+<div class="blank_1">
+    <div class="blank_1_top" >
+        <form action="/local_module/driver/add" method="get">
+            单位&nbsp<input type="text" id="driver_unit" name="driver_unit" class="driver_unit"/>
+            姓名&nbsp<input type="text" id="driver_name" name="driver_name" class="driver_name"/>
+            手机&nbsp<input type="text" id="driver_phone" name="driver_phone" class="driver_phone"/>
+            身份证号&nbsp<input type="text" id="driver_card" name="driver_card" class="driver_card"/>
+            驾照编号&nbsp<input type="text" id="driver_id" name="driver_idcard" class="driver_idcard"/>
+            准驾机型&nbsp<input type="text" id="driver_type" name="driver_type" class="driver_type"/>
+            <button type="submit" class="submit">新增驾驶员</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button><a href="/local_module/driver/find">搜索驾驶员</a></button>
+        </form>
+    </div>
+</div>
+<hr color="black"><br>
+<!--
+<div class="blank_1_under" >
+    <table border="2px" align="center">
+        <tr>
+            <th>单位</th>
+            <th>姓名</th>
+            <th>手机</th>
+            <th>身份证号</th>
+            <th>驾照编号</th>
+            <th>准驾机型</th>
+        </tr>
+    </table>
+</div>
+-->
+
+</body>
+</html>

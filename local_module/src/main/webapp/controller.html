@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=AiPpH6NuNSH7EtnBOOefgrkUy2AVG1L5"></script>
+    <title>无人机在线管理平台</title>
+</head>
+<!--此处为显示无人机的航线-->
+<body>
+<div id="allmap"></div>
+<script type="text/javascript">
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(113.3999005,23.0566652);
+    map.centerAndZoom(point, 15);
+    var polyline = new BMap.Polyline([
+        new BMap.Point(113.3982655,23.0391149),
+        new BMap.Point(113.3996759,23.0389320),
+        new BMap.Point(113.4010772,23.0388987),
+        new BMap.Point(113.4022989,23.0389985),
+        new BMap.Point(113.4033050,23.0391981),
+        new BMap.Point(113.4043471,23.0394641),
+        new BMap.Point(113.4053711,23.0398216),
+        new BMap.Point(113.4064940,23.0403288),
+        new BMap.Point(113.4073474,23.0408276),
+        new BMap.Point(113.4079852,23.0412434),
+        new BMap.Point(113.4083805,23.0415011),
+        new BMap.Point(113.4088925,23.0418337),
+        new BMap.Point(113.4094315,23.0421330),
+        new BMap.Point(113.4137029,23.0465061),
+        new BMap.Point(113.4156792,23.0494990),
+        new BMap.Point(113.4179070,23.0518601),
+        new BMap.Point(113.4188951,23.0529242),
+        new BMap.Point(113.4204222,23.05465349),
+        new BMap.Point(113.4214104,23.0561830),
+        new BMap.Point(113.4230498,23.0607884),
+        new BMap.Point(113.4224749,23.0618192),
+        new BMap.Point(113.4201752,23.0634153),
+        new BMap.Point(113.4192410,23.0641468),
+        new BMap.Point(113.4165101,23.0661086),
+        new BMap.Point(113.4150100,23.0672224),
+        new BMap.Point(113.4131415,23.0683197),
+        new BMap.Point(113.4110574,23.0691509),
+        new BMap.Point(113.4090811,23.0700154),
+        new BMap.Point(113.4070330,23.0716779),
+        new BMap.Point(113.4060269,23.0732406),
+        new BMap.Point(113.4052723,23.0757342),
+        new BMap.Point(113.4034038,23.0779618),
+        new BMap.Point(113.4008167,23.0787264),
+        new BMap.Point(113.3982296,23.0777955),
+        new BMap.Point(113.3961815,23.0768313),
+        new BMap.Point(113.3944927,23.0755347),
+        new BMap.Point(113.3923008,23.0733403),
+        new BMap.Point(113.3912947,23.0717776),
+        new BMap.Point(113.3903245,23.0699489),
+        new BMap.Point(113.3892825,23.0688849),
+        new BMap.Point(113.3870188,23.0670562),
+        new BMap.Point(113.3864259,23.0666794),
+        new BMap.Point(113.3854377,23.0659146),
+        new BMap.Point(113.3846113,23.0652163),
+        new BMap.Point(113.3835333,23.0644183),
+        new BMap.Point(113.3825811,23.0636536),
+        new BMap.Point(113.3811079,23.0624732),
+        new BMap.Point(113.3795449,23.0610101),
+        new BMap.Point(113.3788442,23.0599128),
+        new BMap.Point(113.3780177,23.0584164),
+        new BMap.Point(113.3777303,23.0578179),
+        new BMap.Point(113.3774608,23.0569035),
+        new BMap.Point(113.3771554,23.0557064),
+        new BMap.Point(113.3767960,23.0544428),
+        new BMap.Point(113.3762930,23.0533288),
+        new BMap.Point(113.3757001,23.0522314),
+        new BMap.Point(113.3740472,23.0505022),
+        new BMap.Point(113.3720350,23.0492385),
+        new BMap.Point(113.3702384,23.0487563),
+        new BMap.Point(113.3685496,23.0480414),
+        new BMap.Point(113.3667171,23.0473763),
+        new BMap.Point(113.3649564,23.0465781),
+        new BMap.Point(113.3646869,23.0457634),
+        new BMap.Point(113.3652079,23.0447325),
+        new BMap.Point(113.3658547,23.0434189),
+        new BMap.Point(113.3667171,23.0421551),
+        new BMap.Point(113.3679208,23.0421052),
+        new BMap.Point(113.3693760,23.0419888),
+        new BMap.Point(113.3706696,23.0421163),
+        new BMap.Point(113.3717925,23.0422327),
+        new BMap.Point(113.3726010,23.0422826),
+        new BMap.Point(113.3737777,23.0423990),
+        new BMap.Point(113.3746671,23.0425154),
+        new BMap.Point(113.3756642,23.0426567),
+        new BMap.Point(113.3765355,23.0427233),
+        new BMap.Point(113.3785298,23.0428729),
+        new BMap.Point(113.3800749,23.0428313),
+        new BMap.Point(113.3811977,23.0428064),
+        new BMap.Point(113.3841981,23.0425819),
+        new BMap.Point(113.3852940,23.0424572),
+        new BMap.Point(113.3868571,23.0422577),
+        new BMap.Point(113.3879710,23.0420498),
+        new BMap.Point(113.3889052,23.0418337),
+        new BMap.Point(113.3898844,23.0416009),
+        new BMap.Point(113.3906210,23.0414678),
+        new BMap.Point(113.3925703,23.0406780),
+        new BMap.Point(113.3934147,23.0404618),
+        new BMap.Point(113.3943310,23.0402207),
+        new BMap.Point(113.3949777,23.0400378),
+        new BMap.Point(113.3954359,23.0398881),
+        new BMap.Point(113.3960467,23.0396470),
+        new BMap.Point(113.3970169,23.0393311),
+        new BMap.Point(113.3982655,23.0391149)
+    ], {strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5});
+    map.addOverlay(polyline);
+</script>
+</body>
+</html>

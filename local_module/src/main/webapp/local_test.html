@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>地图</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body, button, input, select, textarea {
+            font: 12px/16px Verdana, Helvetica, Arial, sans-serif;
+        }
+
+        #container {
+            min-width: 600px;
+            min-height: 767px;
+        }
+    </style>
+    <script charset="utf-8"
+            src="http://map.qq.com/api/js?v=2.exp&libraries=convertor"></script>
+    <script charset="utf-8" src="../js/jquery-1.8.3.js"></script>
+    <script>
+        function getLocation() {
+            //判断是否支持 获取本地位置
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "浏览器不支持定位.";
+            }
+        }
+        function showPosition(position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            //调用地图命名空间中的转换接口   type的可选值为 1:GPS经纬度，2:搜狗经纬度，3:百度经纬度，4:mapbar经纬度，5:google经纬度，6:搜狗墨卡托
+            qq.maps.convertor.translate(new qq.maps.LatLng(lat, lng), 1, function(res) {
+                //取出经纬度并且赋值
+                latlng = res[0];
+                var map = new qq.maps.Map(document.getElementById("container"), {
+                    center : latlng,
+                    zoom : 13
+                });
+                //设置marker标记
+                var marker = new qq.maps.Marker({
+                    map : map,
+                    position : latlng
+                });
+                //这个是点击弹框的基本设置
+                var infoWin = new qq.maps.InfoWindow({
+                    map : map
+                });
+                //添加一个地图边线变化的事件,就相当于滑动和放大缩小地图
+                qq.maps.event.addListener(map, 'bounds_changed', function() {
+                    $.post("../wx/getLatLngNearNow.action", {
+                        'center' : map.getCenter().toString(),//中心点的坐标
+                        'ne' : map.getBounds().getNorthEast().toString(),//西北角的坐标
+                        'sw' : map.getBounds().getSouthWest().toString()//东南角的坐标
+                    }, function(data) {
+
+                        //取到附近的机器经纬度
+                        for (var i = 0; i < data.length; i++) {
+                            (function(n) {
+                                //这一部分是添加标记
+                                var latLng2 = new qq.maps.LatLng(parseFloat(data[n].lat), parseFloat(data[n].lng));
+                                var anchor = new qq.maps.Point(6, 6),
+                                    size = new qq.maps.Size(24, 24),
+                                    origin = new qq.maps.Point(0, 0),
+                                    icon = new qq.maps.MarkerImage('../img/center.gif', size, origin, anchor);
+                                var marker2 = new qq.maps.Marker({
+                                    icon : icon,
+                                    map : map,
+                                    position : latLng2
+                                });
+                                //这段是点击标记事件,并且把数据展现到infoWin里
+                                qq.maps.event.addListener(marker2, 'click', function() {
+                                    infoWin.open();
+                                    infoWin.setContent('<div style="text-align:center;white-space:"nowrap;margin:10px;">'
+                                        +data[n].machinename
+                                        +'<br><a href="http://www.baidu.com"><img weight="60px" height="30px" src="../img/pay.jpg"></a></div>');
+                                    infoWin.setPosition(latLng2);
+                                });
+                            })(i);
+                        }
+                    })
+                });
+            });
+        }
+    </script>
+
+</head>
+<body onLoad="getLocation()">
+<p>确定位置</p>
+<div id="container"></div>
+
+</body>
+</html>>

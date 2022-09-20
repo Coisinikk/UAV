@@ -1,0 +1,69 @@
+<!doctype html>
+<meta charset="utf-8">
+<html>
+<title>无人机在线管理平台</title>
+<body>
+<video id="movies" src="test.MOV" controls="controls" autobuffer="true" oncanplay="startVideo()" onended="stopTimeLine()" width="1920px" height="758px">
+</video>
+<!--<canvas id="timeLine" width="1920px" height="758px">
+</canvas>-->
+</body>
+<script>
+    var updataInterval = 100;//抓取帧的时间间隔
+    var frameWidth = 1920;//时序中帧的尺寸
+    var frameHeight = 758;
+    //时序中总的帧数
+    var frameRows = 4;
+    var frameColumns = 4;
+    var frameGrid = frameRows*frameColumns;
+    //当前帧
+    var frameCount = 0;
+    //播放完取消计时器
+    var intervalid;
+    var videoStart = false;
+    //添加updateFrame函数
+    function updateFrame(){
+        var video = document.getElementById('movies');
+        console.log(video.videoWidth);
+        console.log(video.videoHeight);
+        var timeline = document.getElementById('timeLine');
+        var cxt = timeline.getContext('2d');
+        //根据帧数计算出当前播放的播放的位置
+        //然后以视频为输入参数绘制图像
+        var framePos = frameCount%frameGrid;
+        var frameX = (framePos%frameColumns)*frameWidth;
+        var frameY = (framePos%frameRows)*frameHeight;
+        cxt.drawImage(video,0,0,1920,758,frameX,frameY,frameWidth,frameHeight);
+        frameCount++;
+    }
+    function startVideo(){
+        if(videoStart){
+            return;
+        }
+        videoStart = true;
+        updateFrame();
+        intervalId = setInterval(updateFrame,updataInterval);
+    }
+    //处理用户输入
+    var timeLine = document.getElementById('timeLine');
+    timeLine.onclick = function(evt){
+        var offX = evt.layerX - timeLine.offsetLeft;
+        var offY = evt.layerY - timeLine.offsetTop;
+        var clickedFrame = Math.floor(offY/frameHeight)*frameRows;
+        clickedFrame += Math.floor(offX/frameWidth);
+        var seekedFramed = (((Math.floor(frameCount/frameGrid)*frameGrid)) + clickedFrame);
+        if(clickedFrame > (frameCount%16)){
+            seekedFramed = frameGrid;
+        }
+        if(seekedFramed < 0){
+            return;
+        }
+        var video =  document.getElementById('movies');
+        video.currentTime = seekedFramed*updataInterval/1000;
+        frameCount = seekedFramed;
+    }
+    function stopTimeLine(){
+        clearInterval(intervalId);
+    }
+</script>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjy.dao.AircraftDao">
+    <!--查询任务-->
+    <select id="findAll" resultType="com.zjy.entity.Aircrafts">
+        select * from aircraft order by aircraft_id
+    </select>
+    <!--添加任务-->
+    <insert id="add">
+        insert into aircraft values(#{aircraft_id},#{aircraft_unit},#{aircraft_card},#{aircraft_idcard},#{aircraft_time},#{aircraft_type},#{aircraft_long})
+    </insert>
+
+    <!--删除任务-->
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from aircraft where aircraft_id=#{aircraft_id}
+    </delete>
+
+</mapper>

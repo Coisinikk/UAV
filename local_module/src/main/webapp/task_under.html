@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无人机在线管理平台</title>
+</head>
+<style>
+    .blank_1_top{
+        width: 100%;
+        font-size: large;
+        background-color: #f0f0f4;
+        font-size: 20px;
+    }
+    button{
+        float: right;
+        font-size: 20px;
+        margin-top: 3px;
+    }
+    input{
+        font-size: 10px;
+        height: 20px;
+    }
+</style>
+<body>
+<div class="blank_1">
+    <div class="blank_1_top" >
+        <form action="/local_module/task/add" method="get">
+            航空器编号&nbsp<input type="text" id="task_airid" name="task_airid" class="task_airid"/>
+            驾驶员&nbsp<input type="text" id="task_name" name="task_name" class="task_name"/>
+            任务类型&nbsp<input type="text" id="task_type" name="task_type" class="task_type"/>
+            任务状态&nbsp<input type="text" id="task_state" name="task_state" class="task_state"/>
+            创建时间&nbsp<input type="text" id="task_time" name="task_time" class="task_time"/>
+            <button type="submit" class="submit">创建任务</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button><a href="/local_module/task/find">搜索任务</a></button>
+        </form>
+    </div>
+</div>
+<hr color="black"><br>
+</body>
+</html>

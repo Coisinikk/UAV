@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+input {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.login {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/1.jpg);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.login-box {
+    position: absolute;
+    top: 50%;
+    right: 100px;
+    width: 500px;
+    height: 500px;
+    transform: translateY(-50%);
+    background-color: #fff;
+    z-index: 999;
+}
+
+.login-header {
+    text-align: center;
+    margin: 40px 0 30px 0;
+}
+
+.login-text {
+    height: 320px;
+    width: 380px;
+    margin: 0 auto;
+    /* background-color: #2aa; */
+}
+
+.login-text ul li {
+    list-style: none;
+    height: 40px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.login-text ul li .uname,
+.login-text ul li .password {
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    padding-left: 10px;
+    border: 1px solid #858282;
+    box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, .3);
+}
+
+.login-text ul li .password {
+    letter-spacing: 2px;
+}
+
+.login-text ul li:nth-child(3) {
+    height: 20px;
+}
+
+.login-text ul li #check {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.login-text ul li .rem {
+    font-size: 16px;
+    color: #858282;
+    user-select: none;
+}
+
+.login-text ul li button {
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #006faf;
+}
+
+.login-text ul li button:hover {
+    background-color: #3599d2;
+}
+
+.login-text ul li:last-child {
+    text-align: center;
+    color: #858282;
+}
+
+.login-footer {
+    height: 50px;
+    width: 380px;
+    line-height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid rgba(133, 130, 130, .3);
+    color: #858282;
+}

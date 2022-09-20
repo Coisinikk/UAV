@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"/>
+    </plugins>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <!--driver,user,username,password是固定的，不能自定义-->
+                <!--数据库的驱动类名-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <!--连接数据库的url字符串-->
+                <property name="url" value="jdbc:mysql://localhost:3306/zjysql"/>
+                <!--访问数据库的用户名-->
+                <property name="username" value="root"/>
+                <!--访问数据库的密码-->
+                <property name="password" value="333"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--sql mapper(sql映射文件)的位置-->
+    <mappers>
+        <mapper resource="com\zjy\dao\UserDao.xml"/>
+        <mapper resource="com\zjy\dao\TaskDao.xml"/>
+        <mapper resource="com\zjy\dao\DriverDao.xml"/>
+        <mapper resource="com\zjy\dao\AircraftDao.xml"/>
+    </mappers>
+</configuration>

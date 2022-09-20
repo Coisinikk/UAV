@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无人机在线管理平台</title>
+    <style>
+        .blank_1_top{
+            width: 100%;
+            font-size: large;
+            background-color: #f0f0f4;
+            font-size: 20px;
+        }
+        button{
+            float: right;
+            font-size: 20px;
+            margin-top: 3px;
+        }
+        input{
+            font-size: 10px;
+            height: 20px;
+        }
+    </style>
+</head>
+<script>
+
+</script>
+<body>
+<div class="blank_1">
+    <div class="blank_1_top" >
+        <form action="/local_module/aircraft/add" method="get">
+            单位&nbsp<input type="text" id="aircraft_unit" name="aircraft_unit" class="aircraft_unit"/>
+            航空器编号&nbsp<input type="text" id="aircraft_card" name="aircraft_card" class="aircraft_card"/>
+            识别编码&nbsp<input type="text" id="aircraft_idcard" name="aircraft_idcard" class="aircraft_idcard"/>
+            离线时间&nbsp<input type="text" id="aircraft_time" name="aircraft_time" class="aircraft_time"/>
+            飞行状态&nbsp<input type="text" id="aircraft_type" name="aircraft_type" class="aircraft_type"/>
+            飞行时间&nbsp<input type="text" id="aircraft_long" name="aircraft_long" class="aircraft_long"/>
+            <button type="submit" class="submit">新增航空器</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button><a href="/local_module/aircraft/find">搜索航空器</a></button>
+        </form>
+    </div>
+</div>
+<hr color="black"><br>
+<!--
+<div class="blank_1_under" >
+    <table border="2px" align="center">
+        <tr>
+            <th>单位</th>
+            <th>姓名</th>
+            <th>手机</th>
+            <th>身份证号</th>
+            <th>驾照编号</th>
+            <th>准驾机型</th>
+        </tr>
+    </table>
+</div>
+-->
+
+</body>
+</html>
